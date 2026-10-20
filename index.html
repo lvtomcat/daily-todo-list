@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="一个简单的每日代办清单工具" />
+    <title>今日清单</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <p class="eyebrow">DAILY TO-DO</p>
+        <h1>今日清单</h1>
+        <p class="subtitle">把今天最重要的事情，一件一件完成。</p>
+      </header>
+
+      <section class="todo-card" aria-labelledby="list-title">
+        <div class="toolbar">
+          <div>
+            <h2 id="list-title">我的代办</h2>
+            <p id="date-label" class="date-label"></p>
+          </div>
+          <label class="date-picker">
+            <span class="sr-only">选择日期</span>
+            <input id="date-input" type="date" />
+          </label>
+        </div>
+
+        <form id="todo-form" class="todo-form">
+          <label class="sr-only" for="todo-input">新增代办事项</label>
+          <input
+            id="todo-input"
+            name="todo"
+            type="text"
+            maxlength="100"
+            placeholder="例如：整理会议笔记"
+            autocomplete="off"
+            required
+          />
+          <button type="submit">添加</button>
+        </form>
+
+        <div class="summary-row" aria-live="polite">
+          <p id="summary">还没有代办事项</p>
+          <button id="clear-completed" class="text-button" type="button">
+            清除已完成
+          </button>
+        </div>
+
+        <ul id="todo-list" class="todo-list" aria-label="代办事项列表"></ul>
+
+        <p id="empty-state" class="empty-state">今天暂时没有代办，先添加一件小事吧。</p>
+      </section>
+
+      <p class="storage-note">你的清单会保存在这台设备的浏览器中。</p>
+    </main>
+
+    <template id="todo-item-template">
+      <li class="todo-item">
+        <label class="todo-content">
+          <input class="todo-checkbox" type="checkbox" />
+          <span class="todo-text"></span>
+        </label>
+        <button class="delete-button" type="button" aria-label="删除此事项">删除</button>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
